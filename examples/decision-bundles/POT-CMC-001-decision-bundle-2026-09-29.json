@@ -1,0 +1,141 @@
+{
+  "payload": {
+    "schema": "pot-decision-bundle/v0.1",
+    "case": {
+      "id": "POT-CMC-001",
+      "title": "Reduce treasury BTC exposure by 8%",
+      "proposedAction": "Reduce treasury BTC exposure by 8%"
+    },
+    "evidence": {
+      "captureState": "live",
+      "capturedAt": "2026-09-29T00:44:55.120Z",
+      "records": [
+        {
+          "title": "BTC market quote",
+          "source": "CMC /v2/cryptocurrency/quotes/latest",
+          "value": "$83,470.30 · 24h -0.90%",
+          "state": "Admitted",
+          "observedAt": "2026-09-29T00:42:59.000Z"
+        },
+        {
+          "title": "Global market metrics",
+          "source": "CMC /v1/global-metrics/quotes/latest",
+          "value": "Market cap $2.86T · BTC dominance 58.57%",
+          "state": "Admitted",
+          "observedAt": "2026-09-29T00:43:59.999Z"
+        },
+        {
+          "title": "Counterparty exposure",
+          "source": "Required by case policy",
+          "value": "No verified evidence submitted",
+          "state": "Unresolved"
+        }
+      ],
+      "receipt": {
+        "capturedAt": "2026-09-29T00:44:55.120Z",
+        "checks": [
+          {
+            "endpoint": "CMC /v2/cryptocurrency/quotes/latest",
+            "httpStatus": 200,
+            "outcome": "admitted",
+            "issues": []
+          },
+          {
+            "endpoint": "CMC /v1/global-metrics/quotes/latest",
+            "httpStatus": 200,
+            "outcome": "admitted",
+            "issues": []
+          }
+        ]
+      }
+    },
+    "claims": [
+      {
+        "id": "CLM-001",
+        "classification": "Observed",
+        "claim": "CMC reports a BTC quote and global market metrics at the recorded capture time.",
+        "basis": "Bound to the admitted live BTC quote, global metrics records, and capture receipt.",
+        "effect": "May inform analysis; does not authorize an action."
+      },
+      {
+        "id": "CLM-002",
+        "classification": "Derived",
+        "claim": "The proposed 8% reduction is within the custodian’s CAD $100k mandate.",
+        "basis": "Treasury position, valuation, and proposed transaction value have not been submitted.",
+        "effect": "Not presently calculable; action scope remains unresolved."
+      },
+      {
+        "id": "CLM-003",
+        "classification": "Interpreted",
+        "claim": "Current market conditions support reducing BTC exposure.",
+        "basis": "An analyst may form this recommendation from admitted market evidence.",
+        "effect": "Analysis only; an interpretation cannot become authorization."
+      },
+      {
+        "id": "CLM-004",
+        "classification": "Unresolved",
+        "claim": "Counterparty exposure is acceptable for the proposed action.",
+        "basis": "No verified counterparty-exposure evidence has been submitted.",
+        "effect": "Material blocker; the case must remain DEFERRED."
+      }
+    ],
+    "authority": {
+      "reviewer": {
+        "id": "JL",
+        "name": "Jonah Little Bear",
+        "role": "Treasury Custodian",
+        "trustState": "Custodian",
+        "identityVerified": true,
+        "fictionalDemonstrationIdentity": true,
+        "mandate": "Authorize treasury adjustments up to CAD $100k"
+      },
+      "attemptedAt": "2026-09-29T00:44:10.792Z",
+      "result": "AUTHORITY_SATISFIED"
+    },
+    "gates": {
+      "evidence": {
+        "pass": false,
+        "note": "1 material requirement unresolved"
+      },
+      "claims": {
+        "pass": false,
+        "note": "2 material claims unresolved"
+      },
+      "authority": {
+        "pass": true,
+        "note": "Mandate covers treasury action"
+      },
+      "scope": {
+        "pass": false,
+        "note": "Treasury position and action value not evidenced"
+      }
+    },
+    "decision": {
+      "state": "DEFERRED",
+      "requiredBeforeReconsideration": [
+        "Verified counterparty exposure",
+        "Treasury position evidence",
+        "Proposed transaction value",
+        "Assigned execution scope"
+      ],
+      "transactionPrepared": false,
+      "transactionExecuted": false,
+      "automatedTransitionToAuthorizedAllowed": false
+    },
+    "boundary": {
+      "purpose": "Governance research; not financial advice",
+      "excluded": [
+        "CMC API credential",
+        "Request headers",
+        "Raw provider payloads"
+      ],
+      "humanAuthorizationRequired": true
+    }
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "PoT-CANONICAL-JSON-v0.1 (recursive lexicographic key ordering, UTF-8)",
+    "hashedSection": "payload",
+    "digest": "c463d8810becf96e55d4d4c4f7dfdf78725aef4209f7d39a5c414f03f061e479"
+  }
+}
