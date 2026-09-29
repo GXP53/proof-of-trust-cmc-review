@@ -79,6 +79,7 @@ See [`docs/DECISION_BUNDLE_VERIFICATION.md`](docs/DECISION_BUNDLE_VERIFICATION.m
 - Frozen Site source tag: `pot-v5-freeze`
 - Milestone record: [`docs/LIVE_CAPTURE_MILESTONE.md`](docs/LIVE_CAPTURE_MILESTONE.md)
 - Hackathon evidence index: [`docs/HACKATHON_EVIDENCE_INDEX.md`](docs/HACKATHON_EVIDENCE_INDEX.md)
+- Submission-era live bundle and verification command: [`examples/decision-bundles/`](examples/decision-bundles/)
 - Public-repository credential scan: no credential values, bearer tokens, or downloaded secrets found
 
 ## Security boundary
